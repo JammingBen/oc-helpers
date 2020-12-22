@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+  selenium:
+    image: selenium/standalone-chrome-debug:3.141.59-oxygen
+    restart: unless-stopped
+    network_mode: "host"
+    ports:
+      - '4444:4444'
+      - '5900:5900'
+    volumes:
+      - '/dev/shm:/dev/shm'
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+  collabora: 
+    image: collabora/code
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      - domain=${OC_URL}
+      - extra_params=--o:ssl.enable=false 
+  onlyoffice:
+    image: onlyoffice/documentserver
+    ports:
+      - 8089:80
+    restart: unless-stopped
+    environment:
+      - JWT_ENABLED=false
+  openldap:
+    image: docker.io/bitnami/openldap:2-debian-10
+    restart: unless-stopped
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=adminpassword
+      - LDAP_USERS=user01,user02
+      - LDAP_PASSWORDS=password1,password2
+    volumes:
+      - 'openldap_data:/bitnami/openldap'
+
+volumes:
+  openldap_data:
+    driver: local
