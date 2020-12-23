@@ -27,3 +27,4 @@ List of available services as docker containers. Just hit `docker-compose up`.
 * MailHog
 * Selenium
 * LDAP
+* Redis

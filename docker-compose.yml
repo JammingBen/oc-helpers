@@ -42,6 +42,11 @@ services:
       - LDAP_PASSWORDS=password1,password2
     volumes:
       - 'openldap_data:/bitnami/openldap'
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    restart: unless-stopped
 
 volumes:
   openldap_data:
