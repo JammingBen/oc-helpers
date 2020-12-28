@@ -47,6 +47,12 @@ services:
     ports:
       - 6379:6379
     restart: unless-stopped
+  sftp:
+    image: atmoz/sftp
+    command: foo:pass:::upload
+    ports:
+      - '222:22'
+    restart: unless-stopped
 
 volumes:
   openldap_data:

@@ -28,3 +28,4 @@ List of available services as docker containers. Just hit `docker-compose up`.
 * Selenium
 * LDAP
 * Redis
+* SFTP-Server
