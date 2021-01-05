@@ -29,3 +29,4 @@ List of available services as docker containers. Just hit `docker-compose up`.
 * LDAP
 * Redis
 * SFTP-Server
+* FTP-Server

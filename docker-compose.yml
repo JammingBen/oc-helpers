@@ -51,6 +51,17 @@ services:
     ports:
       - '222:22'
     restart: unless-stopped
+  ftp:
+    image: stilliard/pure-ftpd
+    ports:
+      - '221:21'
+      - '30000-30009:30000-30009'
+    environment:
+      - PUBLICHOST=localhost
+      - FTP_USER_NAME=admin
+      - FTP_USER_PASS=admin
+      - FTP_USER_HOME=/home/ftpusers/admin
+    restart: unless-stopped
 
 volumes:
   openldap_data:
