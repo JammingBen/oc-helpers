@@ -23,7 +23,7 @@ $ make reset-oc-data
 List of available services as docker containers. Just hit `docker-compose up`.
 
 * Collabora
-* OnlyOffice
+* OnlyOffice (use docker IP or switch to host mode in docker-compose.yml)
 * MailHog
 * Selenium
 * LDAP

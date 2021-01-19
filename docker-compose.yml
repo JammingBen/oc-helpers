@@ -21,12 +21,15 @@ services:
       - extra_params=--o:ssl.enable=false 
   onlyoffice:
     image: onlyoffice/documentserver
-    network_mode: "host"
     restart: unless-stopped
     environment:
       - JWT_ENABLED=false
-    volumes:
-      - './docker/onlyoffice/ds.conf:/etc/nginx/conf.d/ds.conf'
+    ports:
+      - '8089:80'
+    # Uncomment for host mode
+    #network_mode: "host"
+    #volumes:
+    #  - './docker/onlyoffice/ds.conf:/etc/nginx/conf.d/ds.conf'
   openldap:
     image: docker.io/bitnami/openldap:2-debian-10
     restart: unless-stopped
