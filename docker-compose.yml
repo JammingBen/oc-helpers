@@ -80,6 +80,13 @@ services:
     ports:
       - 9200:9200
     restart: unless-stopped
+  samba:
+    image: dperson/samba
+    ports:
+      - 139:139
+      - 445:445
+    command: -p -u "admin;admin" -s "public;/share;yes;no" -n
+    restart: unless-stopped
 
 volumes:
   openldap_data:

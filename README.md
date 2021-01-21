@@ -31,3 +31,4 @@ List of available services as docker containers. Just hit `docker-compose up`.
 * SFTP-Server
 * FTP-Server
 * Elasticsearch
+* Samba
