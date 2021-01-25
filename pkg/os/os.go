@@ -3,7 +3,9 @@ package os
 import (
     "io/ioutil"
     "os"
+    "os/exec"
     "path/filepath"
+    "runtime"
     "strings"
 )
 
@@ -43,3 +45,14 @@ func ReplaceFileContent(filename string, searchFor string, replaceWith string) e
     return filepath.Walk(filename, visit)
 }
 
+func GetBasePath() string {
+    _, b, _, _ := runtime.Caller(0)
+    return filepath.Dir(b)
+}
+
+func RunCmd(command string, path string, stdout *os.File) error {
+    cmd := exec.Command("/bin/sh", "-c", command)
+    cmd.Stdout = stdout
+    cmd.Dir = path
+    return cmd.Run()
+}
