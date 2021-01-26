@@ -13,7 +13,7 @@ func main() {
 	configFilePath := fmt.Sprintf("%s/oc-config.json", oc_os.GetBasePath())
 	configFile, _ := os.Create(configFilePath)
 
-	err := oc_os.RunCmd("/usr/bin/php occ config:list", ocPath, configFile)
+	err := oc_os.RunCmd("/usr/bin/php occ config:list --private", ocPath, configFile)
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
