@@ -6,7 +6,7 @@ import (
 
 var (
 	rootCmd = &cobra.Command{
-		Use:   "ochelper",
+		Use:   "oc-helpers",
 		Short: "A small helper project for ownCloud including handy commands and services to make developing easier",
 	}
 )

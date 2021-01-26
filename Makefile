@@ -1,7 +1,7 @@
 all: help
 
-reset-oc-data:
-	@go run cmd/oc-helpers/reset-oc.go
+oc-helpers:
+	@go run ./cmd/oc-helpers.go
 
 tidy:
 	go mod tidy

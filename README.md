@@ -14,8 +14,7 @@ Copy the .env.dist file (`cp .env.dist .env`) and adjust its values.
 ## Commands
 
 ```
-# Reset your ownCloud instance while removing all your data.
-$ make reset-oc-data
+$ make oc-helpers
 ```
 
 ## Services
