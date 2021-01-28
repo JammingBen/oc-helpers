@@ -1,7 +1,7 @@
 all: help
 
-oc-helpers:
-	@go run ./cmd/oc-helpers.go
+build:
+	@go build -o build/oc-helpers ./cmd/oc-helpers.go
 
 tidy:
 	go mod tidy

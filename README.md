@@ -14,7 +14,11 @@ Copy the .env.dist file (`cp .env.dist .env`) and adjust its values.
 ## Commands
 
 ```
-$ make oc-helpers
+# Use the command via go run
+$ go run cmd/*.go
+
+# ...or build an executable in build/oc-helper
+$ make build
 ```
 
 ## Services
