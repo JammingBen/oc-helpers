@@ -47,7 +47,7 @@ func ReplaceFileContent(filename string, searchFor string, replaceWith string) e
 
 func GetBasePath() string {
     _, b, _, _ := runtime.Caller(0)
-    return filepath.Dir(b)
+    return filepath.Join(filepath.Dir(b), "../..")
 }
 
 func RunCmd(command string, path string, stdout *os.File) error {
@@ -55,4 +55,20 @@ func RunCmd(command string, path string, stdout *os.File) error {
     cmd.Stdout = stdout
     cmd.Dir = path
     return cmd.Run()
+}
+
+func ReadFileNames(dir string, omitExtension bool) []string {
+    var files []string
+    _ = filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+        fileName := filepath.Base(path)
+        if fileName == filepath.Base(dir) {
+            return nil
+        }
+        if omitExtension == true {
+            fileName = strings.TrimSuffix(fileName, filepath.Ext(fileName))
+        }
+        files = append(files, fileName)
+        return nil
+    })
+    return files
 }

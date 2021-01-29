@@ -11,14 +11,23 @@ A small helper project for ownCloud including handy commands and services to mak
 
 Copy the .env.dist file (`cp .env.dist .env`) and adjust its values.
 
+## Usage
+
+Either use the command via go run:
+```
+$ go run cmd/*.go
+```
+
+...or build an executable in build/oc-helper:
+```
+$ make build
+```
+
 ## Commands
 
 ```
-# Use the command via go run
-$ go run cmd/*.go
-
-# ...or build an executable in build/oc-helper
-$ make build
+$ oc-helpers reset-oc # reset your OC installation
+$ oc-helpers import-app-config # import app configs which are located in the app_config directory
 ```
 
 ## Services

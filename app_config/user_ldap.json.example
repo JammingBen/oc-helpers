@@ -1,0 +1,8 @@
+{
+  "apps": {
+    "user_ldap": {
+      "ldap_host": "localhost",
+      "ldap_port": "1389",
+    }
+  }
+}
