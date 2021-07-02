@@ -15,7 +15,9 @@ services:
   collabora: 
     image: collabora/code
     restart: unless-stopped
-    network_mode: "host"
+    #network_mode: "host"
+    ports:
+      - 9980:9980
     environment:
       - domain=${OC_URL}
       - extra_params=--o:ssl.enable=false 
@@ -26,7 +28,7 @@ services:
       - JWT_ENABLED=false
     ports:
       - '8089:80'
-    # Uncomment for host mode
+    platform: 'linux/amd64'
     #network_mode: "host"
     #volumes:
     #  - './docker/onlyoffice/ds.conf:/etc/nginx/conf.d/ds.conf'
@@ -66,8 +68,7 @@ services:
       - FTP_USER_HOME=/home/ftpusers/admin
     restart: unless-stopped
   elasticsearch:
-    build:
-      context: ./docker/elasticsearch
+    image: webhippie/elasticsearch:5.6
     environment:
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "xpack.security.enabled=false"
@@ -76,7 +77,8 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - elastic_data:/usr/share/elasticsearch/data
+      - elastic_data:/var/lib/elasticsearch
+      - ./docker/elasticsearch/plugins/:/usr/share/elasticsearch/plugins
     ports:
       - 9200:9200
     restart: unless-stopped
